@@ -6,25 +6,25 @@
 	"content_scripts": [
 		{
 			"matches": [
-				// "http://reddit.com/*/*/comments/*",
-				// "https://reddit.com/*/*/comments/*",
-				// "http://*.reddit.com/*/*/comments/*",
-				// "https://*.reddit.com/*/*/comments/*",
+				"http://reddit.com/*/*/comments/*",
+				"https://reddit.com/*/*/comments/*",
+				"http://*.reddit.com/*/*/comments/*",
+				"https://*.reddit.com/*/*/comments/*",
 				"file:///*",
 				"file:///E://Dev/GitHub/RewindReddit/testpage.html"
 			],
 			"js": [
-				"main.js"
+				"jquery.js", "main.js"
 			],
 			"run_at": "document_end"
 		}
 	],
 	"permissions": [
 		"tabs",
-		// "http://reddit.com/*/*/comments/*",
-		// "https://reddit.com/*/*/comments/*",
-		// "http://*.reddit.com/*/*/comments/*",
-		// "https://*.reddit.com/*/*/comments/*",
+		"http://reddit.com/*/*/comments/*",
+		"https://reddit.com/*/*/comments/*",
+		"http://*.reddit.com/*/*/comments/*",
+		"https://*.reddit.com/*/*/comments/*",
 		"file:///*",
 		"file:///E://Dev/GitHub/RewindReddit/testpage.html"
 	],

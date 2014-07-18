@@ -14,9 +14,12 @@
 				"file:///E://Dev/GitHub/RewindReddit/testpage.html"
 			],
 			"js": [
-				"jquery.js", "main.js"
+				"jquery.js", "jqueryui/jquery-ui.min.js", "main.js"
 			],
-			"run_at": "document_end"
+			"css": [
+				"jqueryui/jquery-ui.css"
+			],
+			"run_at": "document_start"
 		}
 	],
 	"permissions": [
@@ -28,6 +31,9 @@
 		"file:///*",
 		"file:///E://Dev/GitHub/RewindReddit/testpage.html"
 	],
+	"web_accessible_resources": [
+		"jqueryui/images/*"
+  	],
 	"browser_action": {
 		"default_popup": "popup.html"
 	}

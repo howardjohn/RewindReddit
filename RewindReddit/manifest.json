@@ -14,7 +14,7 @@
 				"file:///E://Dev/GitHub/RewindReddit/testpage.html"
 			],
 			"js": [
-				"jquery.js", "jqueryui/jquery-ui.min.js", "main.js"
+				"jquery.js", "jqueryui/jquery-ui.min.js", "moment.js", "main.js"
 			],
 			"css": [
 				"jqueryui/jquery-ui.css"
@@ -33,8 +33,15 @@
 	],
 	"web_accessible_resources": [
 		"jqueryui/images/*"
-  	],
-	"browser_action": {
-		"default_popup": "popup.html"
+	],
+	"icons": {
+		"16": "16.png",
+		"32": "32.png",
+		"48": "48.png",
+		"128": "128.png"
+
 	}
+	// "browser_action": {
+	// 	"default_popup": "popup.html"
+	// }
 }

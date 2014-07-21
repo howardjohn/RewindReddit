@@ -1,6 +1,5 @@
 
 $( document ).ready(function() {
-    console.log(moment("20111031", "YYYYMMDD").fromNow());
     comments = getComments();
     makeSlider(getExtrema(), comments);
 });
@@ -8,13 +7,12 @@ $( document ).ready(function() {
 function getComments() {
     var commentsArray = new Array(parseInt($('.comments.may-blank').text().split(" ")[0]));
     var toplevel = $('.sitetable.nestedlisting').children('.thing');
-    var dict = {}
-    var c = 0
+    var c = 0;
     $.each(toplevel, function(ind, val) {
-        var comments = $(val).find('.entry')
+        var comments = $(val).find('.entry');
         $.each(comments , function(index, value) {
-            commentsArray[c] = $(value);
-            c += 1
+            commentsArray[c] =  [$(value), new Date($(value).find('.collapsed > .live-timestamp').attr('datetime')).getTime()];
+            c += 1;
         });
     });
     return commentsArray;
@@ -28,10 +26,8 @@ function makeSlider(extrema, comments) {
         min: extrema[0],
         max: extrema[1],
         values: [extrema[0],  extrema[1]],
-        step: (extrema[1] - extrema[0])/100,
+        step: (extrema[1] - extrema[0])/250,
         change: function( event, ui ) {
-            hideComments(comments, ui.values);
-            console.log($(".thing:hidden"));
         },
         slide: function( event, ui ) {
             $( "#timerange" ).text("Time Range: " + getDateString(ui.values[0]) + " - " + getDateString(ui.values[1]));
@@ -78,13 +74,13 @@ function getDateString(d) {
 
 function hideComments(comments, vals) {
     for (i = 0; i < comments.length; i++) {
-        var date = new Date($(comments[i]).find('.collapsed > .live-timestamp').attr('datetime')).getTime()
-        console.log(comments[i])
-        if (vals[0] > date || vals[1] < date) {
-            $(comments[i]).parent().hide();
-        } else {
-            $(comments[i]).parent().show();
+        if(comments[i] != undefined){
+            var date = comments[i][1];
+            if (vals[0] > date || vals[1] < date) {
+                $(comments[i][0]).parent().hide();
+            } else {
+                $(comments[i][0]).parent().show();
+            }
         }
-
     }
 }

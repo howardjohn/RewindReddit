@@ -1,7 +1,7 @@
 {
 	"name": "Rewind Reddit",
 	"manifest_version": 2,
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Rewind Reddit - Go back in time in reddit comments",
 	"content_scripts": [
 		{
@@ -9,9 +9,7 @@
 				"http://reddit.com/*/*/comments/*",
 				"https://reddit.com/*/*/comments/*",
 				"http://*.reddit.com/*/*/comments/*",
-				"https://*.reddit.com/*/*/comments/*",
-				"file:///*",
-				"file:///E://Dev/GitHub/RewindReddit/testpage.html"
+				"https://*.reddit.com/*/*/comments/*"
 			],
 			"js": [
 				"jquery.js", "jqueryui/jquery-ui.min.js", "moment.js", "main.js"
@@ -23,13 +21,10 @@
 		}
 	],
 	"permissions": [
-		"tabs",
 		"http://reddit.com/*/*/comments/*",
 		"https://reddit.com/*/*/comments/*",
 		"http://*.reddit.com/*/*/comments/*",
-		"https://*.reddit.com/*/*/comments/*",
-		"file:///*",
-		"file:///E://Dev/GitHub/RewindReddit/testpage.html"
+		"https://*.reddit.com/*/*/comments/*"
 	],
 	"web_accessible_resources": [
 		"jqueryui/images/*"
@@ -41,7 +36,4 @@
 		"128": "128.png"
 
 	}
-	// "browser_action": {
-	// 	"default_popup": "popup.html"
-	// }
 }

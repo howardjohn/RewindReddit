@@ -2,3 +2,5 @@
 *.pem
 *.txt
 *.psd
+*.sublime*
+*.zip

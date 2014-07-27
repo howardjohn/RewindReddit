@@ -1,7 +1,7 @@
 {
 	"name": "Rewind Reddit",
 	"manifest_version": 2,
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Rewind Reddit - Go back in time in reddit comments",
 	"content_scripts": [
 		{
@@ -30,10 +30,10 @@
 		"jqueryui/images/*"
 	],
 	"icons": {
-		"16": "16.png",
-		"32": "32.png",
-		"48": "48.png",
-		"128": "128.png"
+		"16": "images/16.png",
+		"32": "images/32.png",
+		"48": "images/48.png",
+		"128": "images/128.png"
 
 	}
 }

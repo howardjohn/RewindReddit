@@ -1,4 +1,5 @@
 var c = 0;
+var newestDate = 0;
 $( document ).ready(function() {
     comments = getComments();
     makeSlider(getExtrema(), comments);
@@ -11,7 +12,11 @@ function getComments() {
     $.each(toplevel, function(ind, val) {
         var comments = $(val).find('.entry');
         $.each(comments , function(index, value) {
-            commentsArray[c] =  [$(value), new Date($(value).find('.collapsed > .live-timestamp').attr('datetime')).getTime()];
+            var date = new Date($(value).find('.collapsed > .live-timestamp').attr('datetime')).getTime();
+            commentsArray[c] =  [$(value), date];
+            if (date > newestDate) {
+                newestDate = date;
+            }
             c += 1;
         });
     });
@@ -36,7 +41,7 @@ function makeSlider(extrema, comments) {
                 $( "#timerange" ).text("Time Range: " + getDateString(ui.values[0]) + " - " + getDateString(ui.values[1]));
                 c = 0;
             }
-            // $( "#timerange" ).text("Time Range: " + getDateString(ui.values[0]) + " - " + getDateString(ui.values[1]));
+            $( "#timerange" ).text("Time Range: " + getDateString(ui.values[0]) + " - " + getDateString(ui.values[1]));
             hideComments(comments, ui.values);
         }
     });
@@ -63,18 +68,11 @@ function makeSlider(extrema, comments) {
 
 function getExtrema() {
     min = new Date($('.sitetable.linklisting').find('.live-timestamp').attr('datetime')).getTime();
-    max = Date.now();
+    max = newestDate;
     return [min, max];
 }
 
-function pad(s) {
-    return ("00" + s).slice(-2);
-}
-
 function getDateString(d) {
-    d = new Date(d);
-    var s = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear() + "  " 
-            + d.getHours() + ":" + pad(d.getMinutes());
     return moment(d).fromNow();
 }
 

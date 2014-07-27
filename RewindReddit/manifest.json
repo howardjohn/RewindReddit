@@ -2,7 +2,7 @@
 	"name": "Rewind Reddit",
 	"manifest_version": 2,
 	"version": "1.0.1",
-	"description": "Rewind Reddit - Go back in time in reddit comments",
+	"description": "Rewind Reddit - Slide back in time",
 	"content_scripts": [
 		{
 			"matches": [

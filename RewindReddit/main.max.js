@@ -1,5 +1,6 @@
 var c = 0;
 var newestDate = 0;
+var oldestDate = Date.now();
 $( document ).ready(function() {
     comments = getComments();
     makeSlider(getExtrema(), comments);
@@ -16,6 +17,9 @@ function getComments() {
             commentsArray[c] =  [$(value), date];
             if (date > newestDate) {
                 newestDate = date;
+            }
+            if (date < oldestDate) {
+                oldestDate = date;
             }
             c += 1;
         });
@@ -48,7 +52,11 @@ function makeSlider(extrema, comments) {
 
     var right = parseInt($('.side').css('margin-left')) + parseInt($('.side').css('padding-left')) +
             parseInt($('.side').css('margin-right')) + parseInt($('.side').css('padding-right')) +
-            parseInt($('.side').css('width')) + parseInt($('.content').css('margin-right'))
+            parseInt($('.side').css('width')) + parseInt($('.content').css('margin-right')) + 
+            parseInt($('body').css('margin-right'))
+    var left = parseInt($('.content').css('margin-left')) + parseInt($('.commentarea').css('margin-left')) + 
+            parseInt($('.commentarea').css('padding-left')) + parseInt($('body').css('margin-left'))
+
     $("#RedditRewind").css({
         'margin-bottom' : '20px'
     })
@@ -59,16 +67,19 @@ function makeSlider(extrema, comments) {
     });
     $('#rewindslider').css({
         'position' : 'absolute',
-        'right' : (right+20).toString() + 'px',
-        'left' : (parseInt($('.content').css('margin-left'))+20).toString() + 'px'
+        'right' : (right+30).toString() + 'px',
+        'left' : (left+20).toString() + 'px'
     });
     $("#timerange").text("Time Range: " + getDateString($("#rewindslider").slider("values", 0)) +
       " - " + getDateString($("#rewindslider").slider("values", 1)));
 }
 
 function getExtrema() {
-    min = new Date($('.sitetable.linklisting').find('.live-timestamp').attr('datetime')).getTime();
+    min = oldestDate;
     max = newestDate;
+    if (min == max) {
+        max = Date.now();
+    }
     return [min, max];
 }
 

@@ -13,7 +13,7 @@ function getComments() {
     $.each(toplevel, function(ind, val) {
         var comments = $(val).find('.entry');
         $.each(comments , function(index, value) {
-            var date = new Date($(value).find('.collapsed > .live-timestamp').attr('datetime')).getTime();
+            var date = new Date($(value).find('.tagline > .live-timestamp').attr('datetime')).getTime();
             commentsArray[c] =  [$(value), date];
             if (date > newestDate) {
                 newestDate = date;
